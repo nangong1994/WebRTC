@@ -1,0 +1,16 @@
+*, .App {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.App {
+  height: 100vh;
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: 300px auto;
+}
+
+.chatlist {
+  border-right: .5px solid grey;
+}

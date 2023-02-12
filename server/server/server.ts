@@ -4,6 +4,7 @@ import fs from 'fs';
 import http from 'http';
 import https from 'https';
 import { LOGGER } from '../logger/index';
+import { WSServer } from './socket-server/index';
 
 // Pathnames of the SSL key and certificate files to use for
 // HTTPS connections.
@@ -61,12 +62,7 @@ function isUsernameUnique(name: string): boolean {
  * @param msgString 
  */
 function sendToOneUser(target: string, msgString: string) {
-  for (let i = 0; i < connectionArray.length; i++) {
-    if (connectionArray[i].username === target) {
-      connectionArray[i].sendUTF(msgString);
-      break;
-    }
-  }
+  connectionArray.find((conn) => conn.username === target).send(msgString);
 }
 
 /**
@@ -200,7 +196,7 @@ webServer.listen(PORT, function() {
 
 // Create the WebSocket server by converting the HTTPS server into one.
 
-const wsServer = new WebSocketServer({
+const wsServer = WSServer({
   httpServer: webServer,
   autoAcceptConnections: false
 });
@@ -308,7 +304,6 @@ wsServer.on('request', function(request: any) {
       // pass through any messages not specifically handled
       // in the select block above. This allows the clients to
       // exchange signaling and other control objects unimpeded.
-
       if (sendToClients) {
         const msgString = JSON.stringify(msg);
 

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This is for WebRTC practice",
   "scripts": {
-    "dev": "",
+    "dev": "cd server && npm run dev && cd ../",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
