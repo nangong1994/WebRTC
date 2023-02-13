@@ -7,31 +7,32 @@ export class CharListModel {
     this.messageList = new Map();
   }
 
-  addMessage(user: string, message: string) {
-    if (!user) {
+  addMessage(toWhom: string, fromWhom: string, message: string) {
+    if (!toWhom) {
       return;
     }
-    if (!this.messageList.get(user)) {
-      this.messageList.set(user, []);
+    if (!this.messageList.get(toWhom)) {
+      this.messageList.set(toWhom, []);
     }
-    this.messageList.get(user)?.push(new Message(message));
+    this.messageList.get(toWhom)?.push(new Message(message, fromWhom));
   }
 
-  getMessageList(user: string, bString: boolean = true) {
+  getMessageList(user: string, bJSON: boolean = true) {
     const emptyMsg = `Hi, I am ${user}`;
-    if (!bString) {
-      return this.messageList.get(user) || [new Message(emptyMsg)];
+    if (!bJSON) {
+      return this.messageList.get(user) || [new Message(emptyMsg, user)];
     }
 
     const ret  = [];
-    const list: Message[] = this.messageList.get(user) as Message[];
+    let list: Message[] = this.messageList.get(user) as Message[];
     if (!list || !list.length) {
-      return [emptyMsg];
+      this.messageList.set(user, [new Message(emptyMsg, user)]);
     }
 
+    list = this.messageList.get(user) as Message[];
     for (const msg of list) {
-      if (msg && msg.getText()) {
-        ret.push(msg.getText());
+      if (msg && msg.getJson()) {
+        ret.push(msg.getJson());
       }
     }
 

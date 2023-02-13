@@ -28,6 +28,8 @@
   padding: 0 10px;
   display: flex;
   align-items: center;
+  white-space: nowrap;
+  text-overflow: clip;
 }
 
 /* chat window css */

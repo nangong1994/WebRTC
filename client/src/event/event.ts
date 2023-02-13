@@ -1,4 +1,4 @@
-declare type EventType = 'update' | 'userChange';
+export declare type IEventType = 'update' | 'userChange';
 class EventBus<T> {
   private listers: Map<string | T, any>;
   private static instance: EventBus<any>;
@@ -15,14 +15,14 @@ class EventBus<T> {
     return EventBus.instance;
   }
 
-  on(event: EventType | T, listener: any) {
+  on(event: IEventType | T, listener: any) {
     if (!event || !listener) {
       return;
     }
     this.listers.set(event, listener);
   }
 
-  emit(event: EventType | T, data?: any) {
+  emit(event: IEventType | T, data?: any) {
     if (!event || !this.listers.get(event)) {
       return;
     }
