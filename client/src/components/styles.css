@@ -1,0 +1,65 @@
+.panel-box {
+  padding-left: 5px;
+}
+.panel-box .user-info {
+  display: grid;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 5px;
+  grid-template-columns: 30px auto;
+  border-bottom: .5px solid rgb(201, 198, 198);
+}
+.user-info .chatlist-alias {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  user-select: none;
+  border: 1px solid green;
+}
+.user-info li {
+  width: 100%;
+  list-style: none;
+  cursor: pointer;
+  height: 30px;
+  text-align: left;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+
+/* chat window css */
+.window-box {
+  display: grid;
+  grid-template-columns: auto 100px;
+}
+
+.window-box .chat-win  {
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: auto 150px;
+}
+
+.window-box .message-list {
+  /* display: block; */
+  overflow-y: auto;
+}
+
+.type-area {
+  height: 150px;
+}
+.type-area textarea {
+  height: 136px;
+  resize: none;
+  padding: 5px;
+}
+
+.window-box .tool-win {
+  height: 100vh;
+  background-color: rgb(233, 231, 231);
+  border-left: .5px solid grey;
+}

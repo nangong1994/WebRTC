@@ -1,0 +1,31 @@
+{
+  "name": "webrtc-practice",
+  "version": "1.0.0",
+  "description": "This is for WebRTC practice",
+  "scripts": {
+    "dev": "cd server && npm run dev && cd ../",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nangong1994/WebRTC.git"
+  },
+  "keywords": [
+    "webrtc",
+    "audio/video",
+    "real-time"
+  ],
+  "author": "nangong1994",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nangong1994/WebRTC/issues"
+  },
+  "homepage": "https://github.com/nangong1994/WebRTC#readme",
+  "devDependencies": {
+    "@types/node": "16.10.0",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "websocket": "^1.0.34"
+  }
+}
